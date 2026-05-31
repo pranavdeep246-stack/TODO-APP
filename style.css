@@ -10,13 +10,15 @@ h1{
 top: 100px;
 }
 
-.input{
-position: relative;
-top: 300px;
-display: flex;
-left: 550px;
 
+.main{
+    display: flex;
+    flex-direction:column;
+    position: relative;
+    top: 300px;
+    align-items: center;
 }
+
 
 #Taskinput{
     height: 40px;
@@ -31,7 +33,26 @@ left: 550px;
     left: -20px;
     border-radius: 10px 10px 10px 10px;
 }
-.main{
+
+.newdiv{
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    width: 450px;
+}
+
+.tick{
+    height: 20px;
+    width: 20px;
+    border-radius:50px;
+
+}
+.task{
+    width: 300px;
+   
+}
+.cross{
+   height: 10px;
+    width: 10px; 
+    align-self: center;
+     border-radius:50% ;
 }
