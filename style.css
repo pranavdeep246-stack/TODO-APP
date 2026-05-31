@@ -46,6 +46,7 @@ body{
     border: none;
     outline: none;
     background-color:#51f41b;
+    cursor: pointer;
 }
 
 .newdiv{
