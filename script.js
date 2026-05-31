@@ -9,15 +9,20 @@ function taskaddition(){
  newdiv.style.display="flex";
  let tick=document.createElement("input");
  tick.type="checkbox";
- let task=document.createElement("input");
- task.type="text";
+ let task=document.createElement("textarea");
  task.value=input.value;
+ task.readOnly=true;
  let cross=document.createElement("button");
+ cross.innerText="✖";
+ 
 
 tick.classList.add("tick");
 newdiv.classList.add("newdiv");
 task.classList.add("task");
 cross.classList.add("cross");
+
+
+
 
  newdiv.append(tick);
  newdiv.append(task);
@@ -25,6 +30,57 @@ cross.classList.add("cross");
  main.append(newdiv);
  input.value="";
 
+ tick.addEventListener("change",()=>{
+    if(tick.checked){
+    task.style.transform="scale(0.9)";
+     task.style.opacity="0.8";
+     task.style.textDecoration="line-through";
+}
+else{
+    task.style.transform="scale(1)";
+     task.style.opacity="1";
+     task.style.textDecoration="none";
+}});
+
+ cross.addEventListener("click", () => {
+    newdiv.remove();
+});
+task.addEventListener("click",()=>{
+    if(task.readOnly==true){
+        task.blur();
+    }
+});
+
+task.addEventListener("dblclick",()=>{
+    task.readOnly=false;
+    task.style.cursor="text";
+    task.focus();
+});
+
+task.addEventListener("blur",()=>{
+    task.readOnly=true;
+    task.style.cursor="default";
+});
+task.addEventListener("input", () => {
+    task.style.height = "auto";
+    task.style.height = task.scrollHeight + "px";
+});
+task.addEventListener("blur",()=>{
+    if(task.value.trim()==""){
+        newdiv.remove();
+    }
+});
+
+
+
 }
 
-add.addEventListener("click",taskaddition);
+add.addEventListener("click",()=>{
+    taskaddition();
+});
+
+input.addEventListener("keydown",(event)=>{
+    if(event.key==="Enter"){
+   taskaddition(); }
+});
+
