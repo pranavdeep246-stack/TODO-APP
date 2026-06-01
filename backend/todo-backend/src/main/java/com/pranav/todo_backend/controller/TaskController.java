@@ -21,8 +21,22 @@ public class TaskController {
     public List<Task> getAllTasks() {
         return taskRepository.findAll();
     }
-}
-@PostMapping
-public Task createTask(@RequestBody Task task) {
-    return taskRepository.save(task);
+    @PostMapping
+    public Task createTask(@RequestBody Task task) {
+        return taskRepository.save(task);
+    }
+    @PutMapping("/{id}")
+    public Task updateTask(
+            @PathVariable Long id,
+            @RequestBody Task updatedTask
+    ) {
+
+        Task task = taskRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Task not found"));
+
+        task.setTitle(updatedTask.getTitle());
+        task.setCompleted(updatedTask.isCompleted());
+
+        return taskRepository.save(task);
+    }
 }
