@@ -2,15 +2,31 @@ let input=document.querySelector("#Taskinput");
 let add=document.querySelector("#add");
 let main=document.querySelector(".main");
 
-function taskaddition(){
+async function taskaddition(){
  if(input.value.trim()==""){alert("Enter some text"); return;}
 
  let newdiv=document.createElement("div");
  newdiv.style.display="flex";
  let tick=document.createElement("input");
  tick.type="checkbox";
- let task=document.createElement("textarea");
- task.value=input.value;
+
+const taskText = input.value;
+
+await fetch("http://localhost:8080/tasks",{
+    method:"POST",
+    headers:{
+        "Content-Type":"application/json"
+    },
+    body:JSON.stringify({
+        title:taskText,
+        completed:false
+    })
+});
+
+let task=document.createElement("textarea");
+task.value=taskText;
+
+
  task.readOnly=true;
  let cross=document.createElement("button");
  cross.innerText="✖";
