@@ -22,3 +22,7 @@ public class TaskController {
         return taskRepository.findAll();
     }
 }
+@PostMapping
+public Task createTask(@RequestBody Task task) {
+    return taskRepository.save(task);
+}
