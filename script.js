@@ -1,6 +1,20 @@
 let input=document.querySelector("#Taskinput");
 let add=document.querySelector("#add");
 let main=document.querySelector(".main");
+function updateTaskCount() {
+   const total = document.querySelectorAll(".newdiv").length;
+    const completed = document.querySelectorAll(".tick:checked").length;
+
+    const counter = document.getElementById("taskCount");
+
+    if(total === 0){
+        counter.style.display = "none";
+    }
+    else{
+        counter.style.display = "inline";
+        counter.innerText = `${completed} of ${total} tasks completed`;
+    }
+}
 
 async function loadTasks() {
 
@@ -35,6 +49,7 @@ async function loadTasks() {
         newdiv.append(cross);
 
         main.append(newdiv);
+         updateTaskCount();
 
         tick.addEventListener("change",async()=>{
     if(tick.checked){
@@ -57,6 +72,7 @@ await fetch(`http://localhost:8080/tasks/${taskId}`,{
             completed: tick.checked
         })
     });
+     updateTaskCount();
 
 
 });
@@ -66,6 +82,7 @@ await fetch(`http://localhost:8080/tasks/${taskId}`,{
         method:"DELETE"
     });
     newdiv.remove();
+    updateTaskCount();
 });
 task.addEventListener("click",()=>{
     if(task.readOnly==true){
@@ -103,6 +120,7 @@ task.addEventListener("blur",async()=>{
         method:"DELETE"
     });
         newdiv.remove();
+        updateTaskCount();
     }
 });
 
@@ -154,6 +172,7 @@ cross.classList.add("cross");
  newdiv.append(task);
  newdiv.append(cross);
  main.append(newdiv);
+  updateTaskCount();
  input.value="";
 
  tick.addEventListener("change",async()=>{
@@ -177,6 +196,7 @@ else{
             completed: tick.checked
         })
     });
+     updateTaskCount();
 
 
 
@@ -187,6 +207,7 @@ else{
         method:"DELETE"
     });
     newdiv.remove();
+     updateTaskCount();
 });
 task.addEventListener("click",()=>{
     if(task.readOnly==true){
@@ -224,6 +245,7 @@ task.addEventListener("blur",async()=>{
         method:"DELETE"
     });
         newdiv.remove();
+         updateTaskCount();
     }
 });
 

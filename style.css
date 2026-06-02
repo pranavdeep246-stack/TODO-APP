@@ -104,3 +104,26 @@ transform: scale(1.01);
     
 }
 
+#taskCount{
+    position: relative;
+    color: #010f37;
+    top: 130px;
+    font-size: 20px;
+    background-color: rgb(241, 130, 45);
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px;
+}
+button:hover{
+    cursor: pointer;
+    transform: scale(1.01);
+    
+}
+.cross:hover{
+cursor: pointer;
+transform: scale(1.05);
+}
+.tick:hover{
+cursor: pointer;
+transform: scale(1.05);
+}
+
