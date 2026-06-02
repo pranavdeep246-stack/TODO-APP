@@ -9,7 +9,8 @@ async function loadTasks() {
     const tasks = await response.json();
 
     tasks.forEach(taskObj => {
-
+          const taskId = taskObj.id;
+         
         let newdiv = document.createElement("div");
         newdiv.style.display = "flex";
 
@@ -47,7 +48,10 @@ else{
      task.style.textDecoration="none";
 }});
 
- cross.addEventListener("click", () => {
+ cross.addEventListener("click", async() => {
+    await fetch(`http://localhost:8080/tasks/${taskId}`,{
+        method:"DELETE"
+    });
     newdiv.remove();
 });
 task.addEventListener("click",()=>{
@@ -70,8 +74,11 @@ task.addEventListener("input", () => {
     task.style.height = "auto";
     task.style.height = task.scrollHeight + "px";
 });
-task.addEventListener("blur",()=>{
+task.addEventListener("blur",async()=>{
     if(task.value.trim()==""){
+        await fetch(`http://localhost:8080/tasks/${taskId}`,{
+        method:"DELETE"
+    });
         newdiv.remove();
     }
 });
@@ -136,7 +143,10 @@ else{
      task.style.textDecoration="none";
 }});
 
- cross.addEventListener("click", () => {
+ cross.addEventListener("click", async() => {
+    await fetch(`http://localhost:8080/tasks/${taskId}`,{
+        method:"DELETE"
+    });
     newdiv.remove();
 });
 task.addEventListener("click",()=>{
@@ -159,8 +169,11 @@ task.addEventListener("input", () => {
     task.style.height = "auto";
     task.style.height = task.scrollHeight + "px";
 });
-task.addEventListener("blur",()=>{
+task.addEventListener("blur",async()=>{
     if(task.value.trim()==""){
+        await fetch(`http://localhost:8080/tasks/${taskId}`,{
+        method:"DELETE"
+    });
         newdiv.remove();
     }
 });
