@@ -1,6 +1,40 @@
 let input=document.querySelector("#Taskinput");
 let add=document.querySelector("#add");
 let main=document.querySelector(".main");
+const searchBox = document.querySelector("#searchBox");
+
+searchBox.addEventListener("input", () => {
+
+    const searchText = searchBox.value.toLowerCase();
+
+    document.querySelectorAll(".task").forEach(task => {
+
+        const taskDiv = task.parentElement;
+
+        if(task.value.toLowerCase().includes(searchText)){
+            taskDiv.style.display = "flex";
+        }
+        else{
+            taskDiv.style.display = "none";
+        }
+
+    });
+
+});
+searchBox.addEventListener("keydown", (event) => {
+
+    if(event.key === "Enter"){
+
+        searchBox.value = "";
+
+        document.querySelectorAll(".newdiv").forEach(task => {
+            task.style.display = "flex";
+        });
+
+    }
+
+});
+
 function updateTaskCount() {
    const total = document.querySelectorAll(".newdiv").length;
     const completed = document.querySelectorAll(".tick:checked").length;

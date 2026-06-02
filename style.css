@@ -127,3 +127,17 @@ cursor: pointer;
 transform: scale(1.05);
 }
 
+#searchBox{
+    position: relative;
+    top: 50px;
+    border: none;
+    outline: none;
+    width: 270px;
+    height: 28px;
+    border-radius: 7px;
+    background-color: #e6f41b;
+    color: rgb(17, 17, 17);
+}
+#searchBox::placeholder{
+    color: rgb(54, 54, 54);
+}
