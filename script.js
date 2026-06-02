@@ -36,7 +36,7 @@ async function loadTasks() {
 
         main.append(newdiv);
 
-        tick.addEventListener("change",()=>{
+        tick.addEventListener("change",async()=>{
     if(tick.checked){
     task.style.transform="scale(0.9)";
      task.style.opacity="0.8";
@@ -46,7 +46,20 @@ else{
     task.style.transform="scale(1)";
      task.style.opacity="1";
      task.style.textDecoration="none";
-}});
+}
+await fetch(`http://localhost:8080/tasks/${taskId}`,{
+        method:"PUT",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            title: task.value,
+            completed: tick.checked
+        })
+    });
+
+
+});
 
  cross.addEventListener("click", async() => {
     await fetch(`http://localhost:8080/tasks/${taskId}`,{
@@ -133,7 +146,7 @@ cross.classList.add("cross");
  main.append(newdiv);
  input.value="";
 
- tick.addEventListener("change",()=>{
+ tick.addEventListener("change",async()=>{
     if(tick.checked){
     task.style.transform="scale(0.9)";
      task.style.opacity="0.8";
@@ -143,7 +156,21 @@ else{
     task.style.transform="scale(1)";
      task.style.opacity="1";
      task.style.textDecoration="none";
-}});
+}
+ await fetch(`http://localhost:8080/tasks/${taskId}`,{
+        method:"PUT",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            title: task.value,
+            completed: tick.checked
+        })
+    });
+
+
+
+});
 
  cross.addEventListener("click", async() => {
     await fetch(`http://localhost:8080/tasks/${taskId}`,{
