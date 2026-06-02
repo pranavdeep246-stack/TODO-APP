@@ -79,9 +79,19 @@ task.addEventListener("dblclick",()=>{
     task.focus();
 });
 
-task.addEventListener("blur",()=>{
+task.addEventListener("blur",async()=>{
     task.readOnly=true;
     task.style.cursor="default";
+    await fetch(`http://localhost:8080/tasks/${taskId}`,{
+        method:"PUT",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            title: task.value,
+            completed: tick.checked
+        })
+    });
 });
 task.addEventListener("input", () => {
     task.style.height = "auto";
@@ -190,9 +200,19 @@ task.addEventListener("dblclick",()=>{
     task.focus();
 });
 
-task.addEventListener("blur",()=>{
+task.addEventListener("blur",async()=>{
     task.readOnly=true;
     task.style.cursor="default";
+    await fetch(`http://localhost:8080/tasks/${taskId}`,{
+        method:"PUT",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            title: task.value,
+            completed: tick.checked
+        })
+    });
 });
 task.addEventListener("input", () => {
     task.style.height = "auto";
