@@ -97,7 +97,7 @@ async function taskaddition(){
 
 const taskText = input.value;
 
-await fetch("http://localhost:8080/tasks",{
+const response=await fetch("http://localhost:8080/tasks",{
     method:"POST",
     headers:{
         "Content-Type":"application/json"
@@ -107,6 +107,8 @@ await fetch("http://localhost:8080/tasks",{
         completed:false
     })
 });
+const savedTask = await response.json();
+const taskId = savedTask.id;
 
 let task=document.createElement("textarea");
 task.value=taskText;
