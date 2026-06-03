@@ -84,11 +84,17 @@ async function loadTasks() {
 
         main.append(newdiv);
          updateTaskCount();
+         
+         if(taskObj.completed){
+    task.style.transform = "scale(0.9)";
+    task.style.opacity = "0.6";
+    task.style.textDecoration = "line-through";
+}
 
         tick.addEventListener("change",async()=>{
     if(tick.checked){
     task.style.transform="scale(0.9)";
-     task.style.opacity="0.8";
+     task.style.opacity="0.6";
      task.style.textDecoration="line-through";
 }
 else{
@@ -212,8 +218,9 @@ cross.classList.add("cross");
  tick.addEventListener("change",async()=>{
     if(tick.checked){
     task.style.transform="scale(0.9)";
-     task.style.opacity="0.8";
+     task.style.opacity="0.6";
      task.style.textDecoration="line-through";
+    
 }
 else{
     task.style.transform="scale(1)";
