@@ -8,6 +8,16 @@ The application allows users to create, view, update, search, and delete tasks. 
 
 ---
 
+## Live Demo
+
+The project is deployed using GitHub Pages and can be accessed here:
+
+**Live Website:** https://pranavdeep246-stack.github.io/TODO-APP/
+
+## Repository
+
+**GitHub Repository:** https://github.com/pranavdeep246-stack/TODO-APP.git
+
 ## Features
 
 * Create new tasks
@@ -150,15 +160,7 @@ http://localhost:8080
 
 ---
 
-## Future Improvements
 
-* Task categories
-* Due dates
-* Advanced filtering and sorting
-* User authentication
-* Cloud deployment
-
----
 
 ## Author
 
